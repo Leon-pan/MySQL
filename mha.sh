@@ -132,6 +132,8 @@ masterha_manager --conf=/home/mha/app1.cnf
 
 masterha_check_status --conf=/home/mha/app1.cnf
 
+masterha_stop --conf=/home/mha/app1.cnf
+
 #挂到后台，日志输出到manager.log
 nohup masterha_manager --conf=/home/mha/app1.cnf --manager_log=/home/mha/logs/manager.log 2>&1 &
 
