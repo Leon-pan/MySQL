@@ -132,6 +132,9 @@ masterha_manager --conf=/home/mha/app1.cnf
 
 masterha_check_status --conf=/home/mha/app1.cnf
 
+#挂到后台，日志输出到manager.log
+nohup masterha_manager --conf=/home/mha/app1.cnf --manager_log=/home/mha/logs/manager.log 2>&1 &
+
 
 
 
@@ -250,9 +253,54 @@ read-only =1
 log_bin =mysql-bin
 log_slave_updates =1
 binlog_format=MIXED
-
+lower_case_table_names=1
+sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
+
+
+character-set-server=utf8
+collation-server=utf8_unicode_ci
+
+
+default_storage_engine=innodb
+
+skip_external_locking=1
+open_files_limit=65535
+
+# connection
+interactive_timeout=28800
+wait_timeout=28800
+lock_wait_timeout=28800
+skip_name_resolve=1
+max_connections=2000
+max_user_connections=1000
+max_connect_errors=1000000
+
+# table cache performance settings #
+table_open_cache=10240
+table_definition_cache=10240
+table_open_cache_instances=16
+
+# session memory settings #
+read_buffer_size=64M
+read_rnd_buffer_size=262144
+sort_buffer_size=64M
+tmp_table_size=67108864
+join_buffer_size=256M
+thread_cache_size=256
+
+# innodb set
+innodb_buffer_pool_size=40G
+innodb_page_size=16384
+innodb_lock_wait_timeout=60
+innodb_open_files=60000
+
+[mysql]
+default-character-set=utf8
+
+[client]
+default-character-set=utf8
