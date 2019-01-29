@@ -75,6 +75,9 @@ SQL>show slave status\G;
 
 SQL>show processlist;
 
+#查看当前mysql sever id
+SQL>SHOW VARIABLES LIKE 'server_id';
+
 #MHA
 
 #创建工作目录
