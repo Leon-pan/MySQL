@@ -254,7 +254,9 @@ datadir=/home/mysql_data/mysql
 socket=/home/mysql_data/mysql/mysql.sock
 server-id=2
 relay_log = mysql-relay-bin
-read-only =1
+#不启用read-only防止slave切换为master时普通用户无法写入
+#可采用手动设置read-only：mysql -e 'set global read_only=1'
+#read-only =1
 log_bin =mysql-bin
 log_slave_updates =1
 binlog_format=MIXED
