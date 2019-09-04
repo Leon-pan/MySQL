@@ -212,10 +212,12 @@ join_buffer_size=256M
 thread_cache_size=256
 
 # innodb set
+#innodb_buffer_pool_size服务器物理内存大小的80%
 innodb_buffer_pool_size=40G
 innodb_page_size=16384
 innodb_lock_wait_timeout=60
 innodb_open_files=60000
+innodb_log_file_size = 512M
 
 
 [mysql]
@@ -301,10 +303,12 @@ join_buffer_size=256M
 thread_cache_size=256
 
 # innodb set
+#innodb_buffer_pool_size服务器物理内存大小的80%
 innodb_buffer_pool_size=40G
 innodb_page_size=16384
 innodb_lock_wait_timeout=60
 innodb_open_files=60000
+innodb_log_file_size = 512M
 
 [mysql]
 default-character-set=utf8
