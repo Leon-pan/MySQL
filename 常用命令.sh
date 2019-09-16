@@ -1,6 +1,10 @@
 #全库备份
 mysqldump -uroot -p --all-databases > /home/allbackupfile.sql
 
+#建库
+create database jd_szmc default character set utf8;
+grant all privileges on hive.* to 'hive'@'%' identified by 'hive_123#$';
+
 #授权
 grant all privileges on *.* to 'root'@'%' identified by 'P@ssw0rd' with grant option;
 
