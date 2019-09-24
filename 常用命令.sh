@@ -11,6 +11,9 @@ grant all privileges on *.* to 'root'@'%' identified by 'P@ssw0rd' with grant op
 #显示用户
 SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
 
+#删除用户
+drop user 'hive'@'%';
+
 #read_only
 mysql -uroot -p -e 'set global read_only=1'
 set global read_only=1;
