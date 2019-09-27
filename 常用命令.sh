@@ -14,6 +14,9 @@ SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.u
 #删除用户
 drop user 'hive'@'%';
 
+#Mysql5.7降低密码策略
+set global validate_password_policy=0;
+
 #read_only
 mysql -uroot -p -e 'set global read_only=1'
 set global read_only=1;
