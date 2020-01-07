@@ -27,3 +27,6 @@ set global read_only=1;
 #查看信息
 show VARIABLES like '%version%';
 show VARIABLES like '%read_only%';
+
+#my.cnf忽略大小写
+lower_case_table_names=1
