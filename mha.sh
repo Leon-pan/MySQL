@@ -188,6 +188,7 @@ server-id = 1
 log-bin = mysql-bin
 binlog_format=MIXED
 lower_case_table_names=1
+expire_logs_days=30
 sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
@@ -279,6 +280,7 @@ log_bin =mysql-bin
 log_slave_updates =1
 binlog_format=MIXED
 lower_case_table_names=1
+expire_logs_days=30
 sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
