@@ -129,6 +129,21 @@ hostname=IP
 #MHA测试
 /usr/local/bin/masterha_check_ssh --conf=/home/mha/app1.cnf
 
+#vi /etc/profile
+##KEEPALIVED
+#KEEPALIVED_HOME=/usr/local/keepalived
+##MHA
+#MHA_BIN=/usr/local/bin
+#PATH=$KEEPALIVED_HOME/sbin:$MHA_BIN:$PATH
+#export PATH
+
+
+#vi ~/.bashrc
+##MHA
+#MHA_BIN=/usr/local/bin
+#PATH=$MHA_BIN:$PATH
+#export PATH
+
 /usr/local/bin/masterha_check_repl --conf=/home/mha/app1.cnf
 
 /usr/local/bin/masterha_manager --conf=/home/mha/app1.cnf
@@ -138,6 +153,7 @@ hostname=IP
 /usr/local/bin/masterha_stop --conf=/home/mha/app1.cnf
 
 #挂到后台，日志输出到manager.log
+mkdir -p /home/mha/logs/
 nohup /usr/local/bin/masterha_manager --conf=/home/mha/app1.cnf --manager_log=/home/mha/logs/manager.log 2>&1 &
 
 
