@@ -277,6 +277,7 @@ relay_log = mysql-relay-bin
 #可采用手动设置read-only：mysql -e 'set global read_only=1'
 #read-only =1
 log_bin =mysql-bin
+#log_slave_updates参数没有开启时，从库的binlog不会记录来源于主库的操作记录。只有开启log_slave_updates，从库binlog才会记录主库同步的操作日志。
 log_slave_updates =1
 binlog_format=MIXED
 lower_case_table_names=1
