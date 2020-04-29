@@ -224,6 +224,7 @@ table_open_cache_instances=16
 read_buffer_size=64M
 read_rnd_buffer_size=262144
 sort_buffer_size=64M
+#tmp 64G
 tmp_table_size=67108864
 join_buffer_size=256M
 thread_cache_size=256
@@ -278,7 +279,7 @@ relay_log = mysql-relay-bin
 #read-only =1
 log_bin =mysql-bin
 #log_slave_updates参数没有开启时，从库的binlog不会记录来源于主库的操作记录。只有开启log_slave_updates，从库binlog才会记录主库同步的操作日志。
-log_slave_updates =1
+#log_slave_updates =1
 binlog_format=MIXED
 lower_case_table_names=1
 expire_logs_days=30
@@ -317,6 +318,7 @@ table_open_cache_instances=16
 read_buffer_size=64M
 read_rnd_buffer_size=262144
 sort_buffer_size=64M
+#tmp 64G
 tmp_table_size=67108864
 join_buffer_size=256M
 thread_cache_size=256
