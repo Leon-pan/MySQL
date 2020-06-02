@@ -189,6 +189,7 @@ log-bin = mysql-bin
 binlog_format=MIXED
 lower_case_table_names=1
 expire_logs_days=30
+slow_query_log = ON
 sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
@@ -224,7 +225,7 @@ table_open_cache_instances=16
 read_buffer_size=64M
 read_rnd_buffer_size=262144
 sort_buffer_size=64M
-#tmp 64G
+#tmp临时表大小64G
 tmp_table_size=67108864
 join_buffer_size=256M
 thread_cache_size=256
