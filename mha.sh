@@ -53,16 +53,18 @@ Mysql默认安装路径为/var/lib/mysql ,空间较小推荐将安装路径配�
 [root@namenode ~]# systemctl start mysqld
 
 ##主
+#备份主库
+[root@namenode ~]# mysqldump --master-data=1 --single-transaction -R --triggers -A > mysqlbackup.sql
 #授权复制账户
 SQL>grant replication slave ,replication client on *.* to slave@'%' identified by 'password';
 
+#查看主库备份时的binlog名称和位置
+[root@namenode ~]# head -n 30 mysqlbackup.sql | grep 'CHANGE MASTER TO'
 #查看主服务器的状态
-SQL>show master status;
+#SQL>show master status;
 
 ##从
 #启动从服务器复制线程
-SQL>grant all privileges on *.* to 'slave'@'%' identified by 'password' with grant option;
-
 SQL>change master to master_host='IP', master_user='slave', 
 master_password='password', 
 master_log_file='mysql-bin.000003', 
