@@ -1,5 +1,5 @@
 #全库备份
-mysqldump -uroot -p --all-databases > /home/allbackupfile.sql
+mysqldump -uroot -p --all-databases --master-data=2 --single-transaction --quick --force --routines --triggers --events > /home/allbackupfile.sql
 
 #建库
 create database jd_szmc default character set utf8;
