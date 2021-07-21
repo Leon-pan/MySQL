@@ -59,7 +59,7 @@ Mysql默认安装路径为/var/lib/mysql ,空间较小推荐将安装路径配�
 SQL>grant replication slave ,replication client on *.* to slave@'%' identified by 'password';
 
 #查看主库备份时的binlog名称和位置
-[root@namenode ~]# head -n 30 mysqlbackup.sql | grep 'CHANGE MASTER TO'
+#[root@namenode ~]# head -n 30 mysqlbackup.sql | grep 'CHANGE MASTER TO'
 #查看主服务器的状态
 #SQL>show master status;
 
@@ -67,12 +67,17 @@ SQL>grant replication slave ,replication client on *.* to slave@'%' identified b
 #导入SQL
 mysql -uroot -p < mysqlbackup.sql
 
-#启动从服务器复制线程
-SQL>change master to master_host='IP', master_user='slave', 
-master_password='password', 
-master_log_file='mysql-bin.000003', 
-master_log_pos=510;
+#启动从服务器复制线程(GTID)
+SQL>change master to master_host='IP',master_user='slave',
+master_password='password',
+master_port=3306,
+master_auto_position=1;
 SQL>start slave; 
+#启动从服务器复制线程
+#SQL>change master to master_host='IP', master_user='slave', 
+#master_password='password', 
+#master_log_file='mysql-bin.000003', 
+#master_log_pos=510;
 
 #查看从服务器状态 
 SQL>show slave status\G;
@@ -190,6 +195,8 @@ datadir=/home/mysql_data/mysql
 #socket=/var/lib/mysql/mysql.sock
 socket=/home/mysql_data/mysql/mysql.sock
 server-id = 1
+gtid_mode = ON
+enforce_gtid_consistency = ON
 log-bin = mysql-bin
 binlog_format=MIXED
 lower_case_table_names=1
@@ -279,12 +286,14 @@ datadir=/home/mysql_data/mysql
 #socket=/var/lib/mysql/mysql.sock
 socket=/home/mysql_data/mysql/mysql.sock
 server-id=2
+gtid_mode = ON
+enforce_gtid_consistency = ON
 relay_log = mysql-relay-bin
 #不启用read-only防止slave切换为master时普通用户无法写入
 #可采用手动设置read-only：mysql -e 'set global read_only=1'
 #read-only =1
 log_bin =mysql-bin
-#log_slave_updates参数没有开启时，从库的binlog不会记录来源于主库的操作记录。只有开启log_slave_updates，从库binlog才会记录主库同步的操作日志。
+#log_slave_updates参数没有开启时，从库的binlog不会记录来源于主库的操作记录。只有开启log_slave_updates，从库binlog才会记录主库同步的操作日志。可用于主主从架构
 #log_slave_updates =1
 binlog_format=MIXED
 lower_case_table_names=1
