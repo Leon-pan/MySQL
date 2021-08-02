@@ -227,6 +227,8 @@ skip_name_resolve=1
 max_connections=2000
 max_user_connections=1000
 max_connect_errors=1000000
+skip-name-resolve
+skip-host-cache
 
 # table cache performance settings #
 table_open_cache=10240
@@ -323,6 +325,8 @@ skip_name_resolve=1
 max_connections=2000
 max_user_connections=1000
 max_connect_errors=1000000
+skip-name-resolve
+skip-host-cache
 
 # table cache performance settings #
 table_open_cache=10240
