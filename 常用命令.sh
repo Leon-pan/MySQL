@@ -30,3 +30,14 @@ show VARIABLES like '%read_only%';
 
 #my.cnf忽略大小写
 lower_case_table_names=1
+
+cat > /etc/yum.repos.d/mysql57.repo <<- 'EOF'
+# Enable to use MySQL 5.7
+[mysql-5.7-community]
+name=MySQL 5.7 Community Server
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-5.7-community-el7-$basearch/
+enabled=1
+gpgcheck=0
+gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
+EOF
+yum install -y mysql-server
