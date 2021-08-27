@@ -1,6 +1,13 @@
 #全库备份
 mysqldump -uroot -p --all-databases --master-data=2 --single-transaction --quick --force --routines --triggers --events > /home/allbackupfile.sql
 
+#查看binlog
+mysqlbinlog -v --base64-output=decode-rows /var/lib/mysql/master.000003 \
+    --start-datetime="2019-03-01 00:00:00"  \
+    --stop-datetime="2019-03-10 00:00:00"   \
+    --start-position="5000"    \
+    --stop-position="20000"
+
 #建库
 create database jd_szmc default character set utf8;
 grant all privileges on hive.* to 'hive'@'%' identified by 'hive_123#$';
