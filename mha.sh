@@ -54,7 +54,7 @@ Mysql默认安装路径为/var/lib/mysql ,空间较小推荐将安装路径配�
 
 ##主
 #备份主库
-[root@namenode ~]# mysqldump --master-data=1 --single-transaction -R --triggers -A > mysqlbackup.sql
+[root@namenode ~]# mysqldump --master-data=1 --single-transaction --all-databases --triggers --routines --events > mysqlbackup.sql
 #授权复制账户
 SQL>grant replication slave ,replication client on *.* to slave@'%' identified by 'password';
 
@@ -197,7 +197,7 @@ socket=/home/mysql_data/mysql/mysql.sock
 server-id = 1
 gtid_mode = ON
 enforce_gtid_consistency = ON
-log-bin = mysql-bin
+log_bin = mysql-bin
 binlog_format=MIXED
 lower_case_table_names=1
 expire_logs_days=30
@@ -251,6 +251,7 @@ innodb_page_size=16384
 innodb_lock_wait_timeout=60
 innodb_open_files=60000
 innodb_log_file_size = 512M
+innodb_temp_data_file_path=ibtmp1:12M:autoextend:max:10G
 
 
 [mysql]
@@ -349,6 +350,7 @@ innodb_page_size=16384
 innodb_lock_wait_timeout=60
 innodb_open_files=60000
 innodb_log_file_size = 512M
+innodb_temp_data_file_path=ibtmp1:12M:autoextend:max:10G
 
 [mysql]
 default-character-set=utf8
