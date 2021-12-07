@@ -48,3 +48,15 @@ gpgcheck=0
 gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
 EOF
 yum install -y mysql-server
+
+#innobackupex
+yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+yum install percona-xtrabackup-24
+
+innobackupex --user=root --password=password --socket=/var/lib/mysql/mysql.sock --parallel=4 --no-timestamp /root/bak
+innobackupex --apply-log /tmp/mysql/# 导入数据后，还要执行下整理操作
+innobackupex --copy-back  /tmp/mysql/  # 将整理好的数据库文件导入到原先的mysql datadir里
+chown mysql.mysql  /data/mysql/ -R
+cat xtrabackup_info
+mysql>reset master
+mysql>SET @@GLOBAL.GTID_PURGED='uuid:seq';
