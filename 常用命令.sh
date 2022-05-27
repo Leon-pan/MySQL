@@ -1,6 +1,9 @@
 #全库备份
 mysqldump -uroot -p --all-databases --master-data=2 --single-transaction --quick --force --routines --triggers --events > /home/allbackupfile.sql
 
+#备份特定库
+mysqldump -uroot -p --databases DB1 DB2 --master-data=2 --single-transaction --quick --force --routines --triggers --events > /home/DB1backupfile.sql
+
 #查看binlog
 mysqlbinlog -v --base64-output=decode-rows /var/lib/mysql/master.000003 \
     --start-datetime="2019-03-01 00:00:00"  \
