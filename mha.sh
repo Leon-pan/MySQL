@@ -84,7 +84,32 @@ SQL>start slave;
 SQL>show slave status\G;
 
 
-SQL>show processlist;
+#gtid方式主从错误重建
+SQL>stop slave;
+grep GLOBAL.GTID_PURGED master_all.sql
+SQL>source /data/master_all.sql;
+#将事务置为0,并重新设定事务号
+SQL>RESET MASTER;
+SQL>set GLOBAL gtid_purged='xxx';
+#set global read_only = on;
+SQL>start slave;
+SQL>show slave status\G;
+
+
+#gtid方式主从错误修复
+SQL>stop slave;
+SQL>set gtid_next=xxx;
+SQL>begin;
+SQL>commit;
+SQL>set gtid_next=automatic;
+SQL>start slave;
+SQL>show slave status\G;
+
+#自动批量修复
+#yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+#yum install percona-toolkit
+#pt-slave-restart --user=root --password='password'--error-numbers=跳过此错误代码
+
 
 #查看当前mysql sever id
 SQL>SHOW VARIABLES LIKE 'server_id';
