@@ -235,6 +235,8 @@ symbolic-links=0
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
+#timezone
+default-time-zone=+08:00
 
 character-set-server=utf8
 collation-server=utf8_unicode_ci
@@ -334,6 +336,8 @@ symbolic-links=0
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
+#timezone
+default-time-zone=+08:00
 
 character-set-server=utf8
 collation-server=utf8_unicode_ci
