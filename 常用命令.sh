@@ -52,6 +52,8 @@ gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
 EOF
 yum install -y mysql-server
 
+#docker run --name mysql -p3306:3306 -v /docker/mysql:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=HYMXG2pLgR92 -d mysql:5.7
+
 #innobackupex
 yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 yum install percona-xtrabackup-24
