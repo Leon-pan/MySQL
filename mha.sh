@@ -232,6 +232,8 @@ sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
+max_allowed_packet = 32M
+
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
@@ -332,6 +334,8 @@ expire_logs_days=30
 sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
+
+max_allowed_packet = 32M
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
